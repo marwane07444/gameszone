@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      try {
+        var proto = Object.getPrototypeOf(window);
+        var desc = Object.getOwnPropertyDescriptor(window, 'fetch') || (proto && Object.getOwnPropertyDescriptor(proto, 'fetch'));
+        if (desc && desc.get && !desc.set) {
+          var realFetch = desc.get.call(window);
+          Object.defineProperty(window, 'fetch', {
+            get: function() { return realFetch; },
+            set: function(val) { realFetch = val; },
+            configurable: true,
+            enumerable: true
+          });
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GAMEHUB.COM — Dive into an ever-growing collection of popular apps and games, all chosen to bring you quality, entertainment, and security.">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>GameHub — Unlock the Best in Apps and Games</title>
+  
+  <link rel="icon" href="images/logo modbux.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <img src="images/logo modbux.png" alt="ModbuX Logo" class="brand-logo-img">
+      <span class="brand-text"><span class="game-text">Game</span><span class="hub-text">Hub</span></span>
+    </div>
+    <div class="nav-right">
+      <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme" title="Switch Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <div class="menu-dropdown-wrapper">
+        <button id="menuToggleBtn" class="menu-toggle-btn" aria-label="Toggle Navigation Menu" title="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div id="navDropdownMenu" class="nav-dropdown-menu">
+          <a href="#top" id="navHome" class="nav-dropdown-item active"><i class="fas fa-home"></i> <span>Home</span></a>
+          <a href="#appGrid" id="navGames" class="nav-dropdown-item"><i class="fas fa-gamepad"></i> <span>Games</span></a>
+          <a href="#faqSection" id="navFaq" class="nav-dropdown-item"><i class="fas fa-question-circle"></i> <span>FAQ</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-container" id="top">
+    <div class="hero-banner">
+      <div class="hero-banner-content">
+        <h1 class="hero-banner-title">
+          Play.<br>
+          <span class="purple-text">Win.</span><br>
+          Enjoy.
+        </h1>
+        
+        <button class="hero-play-btn" onclick="document.getElementById('appGrid').scrollIntoView({ behavior: 'smooth' })">
+          Play Now <i class="fas fa-arrow-right"></i>
+        </button>
+
+        <div class="hero-banner-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="hero-banner-graphic">
+        <div class="purple-bg-aura"></div>
+        <div class="gamer-character">
+          <img src="images/purple-character-ultra-compressed.png" alt="Gamer Character" class="gamer-img">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>100% Secure</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-check-circle"></i>
+        <span>Verified Files</span>
+      </div>
+      <div class="trust-badge">
+        <i class="fas fa-bolt"></i>
+        <span>Fast Downloads</span>
+      </div>
+      <div class="trust-badge">
+        <div class="online-dot"></div>
+        <span id="onlineCount"><strong>1,428 users online</strong></span>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchInput" placeholder="Search for apps or games..." class="search-input">
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="section-header">
+      <h2 class="section-title">Featured</h2>
+      <div class="filter-chips" id="filterChips">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="apps">Apps</button>
+        <button class="filter-chip" data-filter="games">Games</button>
+      </div>
+    </div>
+    <div class="app-grid" id="appGrid">
+      <!-- Generated via JS -->
+    </div>
+  </main>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container text-center">
+      <h2 class="section-title">Why Choose GameHub?</h2>
+      <p style="color: var(--text-muted); margin-bottom: 32px;">We provide the best way to access premium content without paying</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon blue"><i class="fas fa-bolt"></i></div>
+          <h3 class="feature-title">Instant Access</h3>
+          <p class="feature-desc">Get immediate download links after completing a simple offer. No waiting, no delays.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="feature-title">100% Safe</h3>
+          <p class="feature-desc">All our downloads are thoroughly tested for viruses and malware. Your safety is our priority.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple"><i class="fas fa-sync-alt"></i></div>
+          <h3 class="feature-title">Regular Updates</h3>
+          <p class="feature-desc">We constantly update our library with the latest apps and games to keep you ahead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqSection" class="faq-section">
+    <div class="container text-center">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p style="color: var(--text-muted); margin-bottom: 32px;">Got questions? We've got answers.</p>
+      
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h3 class="faq-question"><i class="fas fa-question-circle"></i> How do I download apps & games?</h3>
+          <p class="faq-answer">Select your desired app or game, pick your platform (Android or iOS), and complete a quick verification task to start your high-speed download.</p>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-question"><i class="fas fa-shield-alt"></i> Are all files safe & verified?</h3>
+          <p class="faq-answer">Yes, 100%. Every app package is thoroughly scanned and tested for security and malware before being published on GameHub.</p>
+        </div>
+        <div class="faq-card">
+          <h3 class="faq-question"><i class="fas fa-bolt"></i> Is human verification free?</h3>
+          <p class="faq-answer">Yes, human verification uses standard free tasks to protect server capacity from automated bots and keep downloads fast for everyone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p class="footer-text">© 2026 GAMEHUB.COM. All rights reserved.</p>
+  </footer>
+
+  <!-- TikTok Fallback Detection -->
+  <div id="tiktok-fallback" class="tiktok-fallback" style="display: none;">
+    <img src="https://i.postimg.cc/kM6GVNVf/up-right-arrow-2.png" class="tiktok-arrow" alt="Arrow">
+    <div class="tiktok-content">
+      <h2>🚀 Open in Browser to download without problems</h2>
+      <p>TikTok limits some features inside its app browser. To Continue:</p>
+      <p style="margin-top: 16px;">Tap On " ••• "</p>
+      <img src="https://i.ibb.co/7d7S2DMt/Untitled-design-20250528-170354-0000.png" alt="Step 1">
+      <p style="margin-top: 16px;">Then Tap On " Open In Browser "</p>
+      <img src="https://i.ibb.co/XkC1Zmv5/Untitled-design-20250528-170043-0000.png" alt="Step 2">
+    </div>
+  </div>
+
+  <!-- Popups -->
+  
+  <!-- Device Selection Popup -->
+  <div class="popup-overlay" id="devicePopup">
+    <div class="popup-content">
+      <button class="popup-close" onclick="closeDevicePopup()"><i class="fas fa-times"></i></button>
+      <div class="popup-header">
+        <img id="deviceAppIcon" src="" class="popup-app-icon" alt="App Icon">
+        <h3 id="deviceAppTitle" class="popup-app-title">App Title</h3>
+      </div>
+      <p class="popup-subtitle">Choose your device</p>
+      <div class="device-buttons">
+        <button class="device-btn android" onclick="selectDevice('android')">
+          <i class="fab fa-android"></i> Android
+        </button>
+        <button class="device-btn ios" onclick="selectDevice('ios')">
+          <i class="fab fa-apple"></i> iOS
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Progress Popup -->
+  <div class="popup-overlay" id="progressPopup">
+    <div class="popup-content">
+      <div class="popup-header">
+        <img id="progressAppIcon" src="" class="popup-app-icon" alt="App Icon">
+        <h3 id="progressAppTitle" class="popup-app-title">App Title</h3>
+      </div>
+      <div class="circular-progress-wrapper" id="circularProgressWrapper">
+        <svg class="circular-progress" viewBox="0 0 100 100">
+          <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+          <circle class="progress-ring" id="progressRing" cx="50" cy="50" r="45"></circle>
+          <path class="progress-checkmark" id="progressCheckmark" d="M35,50 L45,60 L65,40" fill="none" stroke="url(#progressGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <defs>
+            <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#60a5fa" />
+              <stop offset="100%" stop-color="#2563eb" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="progress-center-text" id="progressCenterText">0%</div>
+      </div>
+      <p class="popup-subtitle" id="progressStatus" style="font-weight: 600; margin-bottom: 12px;">Installing...</p>
+      <div class="progress-status-container">
+        <ul class="progress-checklist" id="progressChecklist">
+          <li id="step1"><span><i class="far fa-circle"></i></span> Download package</li>
+          <li id="step2"><span><i class="far fa-circle"></i></span> Verifying integrity</li>
+          <li id="step3"><span><i class="far fa-circle"></i></span> Preparing installation</li>
+          <li id="step4"><span><i class="far fa-circle"></i></span> Optimizing files...</li>
+          <li id="step5"><span><i class="far fa-circle"></i></span> Finalizing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verification Popup -->
+  <div class="popup-overlay" id="verificationPopup">
+    <div class="popup-content verify-popup-content">
+      <div class="popup-header verify-header">
+        <div class="premium-icon-wrapper">
+          <div class="icon-blur-bg" id="verifyAppIconBlur"></div>
+          <img id="verifyAppIcon" src="" class="popup-app-icon" alt="App Icon">
+        </div>
+        <h3 id="verifyAppTitle" class="popup-app-title">App Title</h3>
+      </div>
+      
+      <div class="verify-instruction-box">
+        <div class="verify-instruction-title"><i class="fas fa-lock"></i> Human Verification</div>
+        <div class="verify-instruction-text">Complete a quick, free task below to <strong>unlock your download</strong>.</div>
+      </div>
+
+      <div class="content-locker-container">
+        <!-- AdBlueMedia Content Locker -->
+        <div id="content-locker" class="offers-list">
+          <div class="offer-card">
+            <div class="offer-icon"><i class="fas fa-gamepad"></i></div>
+            <div class="offer-details">
+              <h4>Play a game & reach level 10</h4>
+              <p class="offer-desc">Complete level 10 to unlock download</p>
+            </div>
+            <div class="offer-action-btn">OPEN</div>
+          </div>
+          <div class="offer-card">
+            <div class="offer-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="offer-details">
+              <h4>Install and run this app</h4>
+              <p class="offer-desc">Run for 30 seconds to verify human</p>
+            </div>
+            <div class="offer-action-btn">OPEN</div>
+          </div>
+          <div class="offer-card">
+            <div class="offer-icon"><i class="fas fa-tasks"></i></div>
+            <div class="offer-details">
+              <h4>Complete a quick survey</h4>
+              <p class="offer-desc">Answer simple questions to continue</p>
+            </div>
+            <div class="offer-action-btn">OPEN</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="verify-footer">
+        <div class="verify-download-btn" id="verifyCountdownBtn" onclick="showVerifyToast()">
+          <i class="far fa-clock"></i> <span id="verifyCountdownText">10:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="verifyToast" class="verify-toast">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span>Please verify that you are human first.</span>
+  </div>
+  </div>
+
+  <script src="/src/main.js" type="module"></script>
+</body>
+</html>
+
